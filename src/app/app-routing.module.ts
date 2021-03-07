@@ -9,7 +9,23 @@ const routes: Routes = [
   },
   {
     path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+    loadChildren: () => import('./pages/folder/folder.module').then(m => m.FolderPageModule)
+  },
+  {
+    path: 'confirm-payment-modal',
+    loadChildren: () => import('./pages/modal/confirm-payment-modal/confirm-payment-modal.module').then( m => m.ConfirmPaymentModalPageModule)
+  },
+  {
+    path: 'payed',
+    loadChildren: () => import('./pages/modal/payed/payed.module').then( m => m.PayedPageModule)
+  },
+  {
+    path: 'confirm-exit',
+    loadChildren: () => import('./pages/modal/confirm-exit/confirm-exit.module').then( m => m.ConfirmExitPageModule)
+  },
+  {
+    path: 'historic',
+    loadChildren: () => import('./pages/historic/historic.module').then( m => m.HistoricPageModule)
   }
 ];
 

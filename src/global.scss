@@ -25,7 +25,13 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+/* Font Import */
+@import "app/resources/fonts/fonts.css";
+
 :root {
+
+  --ion-font-family: "Open Sans";
+  font-family: "Open Sans";
 
   ion-toolbar {
     --background: var(--ion-color-primary);
@@ -47,9 +53,59 @@
     }
   }
 
+  .font-38-normal {
+    font-size: 38px;
+    font-weight: 400;
+    line-height: 51.75px;
+  }
+
+  .font-16-normal {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21.79px;
+  }
+
+
+  .margin-top-medium {
+    margin-top: 32px;
+  }
+
   .largeButton {
-    width: 312px;
+    width: 300px;
     height: 67px;
     border-radius: 4px;
+  }
+
+  .text-area-lg {
+    border: 1px solid #cccccc;
+    background-color: #FFFBE6;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    --padding-top: 30px;
+  }
+
+  .medium-modal {
+    .modal-wrapper {
+      position: absolute;
+      max-width: 339px;
+      max-height: 339px;
+      border-radius: 4px;
+    }
+    .modal-shadow {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      min-height: 100%;
+      background-color: rgba(0, 0, 0, 0.51);
+    }
+  }
+
+  .d-grid-center {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 }
