@@ -1,17 +1,31 @@
 <ion-content>
-  <div class="d-grid-center margin-top-medium">
-    <ion-text class="font-16-normal padding-vertical-large" >Confirma o pagamento da placa abaixo?</ion-text>
-    <ion-text class="font-38-normal" color="'#00bcd4'">ABC-1234</ion-text>
+  <div *ngIf="status === 'showText'">
+    <div class="d-grid-center margin-top-medium">
+      <ion-text class="font-16-normal padding-vertical-large" >Confirma a saída do veiculo da placa abaixo?</ion-text>
+      <ion-text class="font-38-normal" color="'#00bcd4'">ABC-1234</ion-text>
+    </div>
+    <div class="d-grid-center">
+      <ion-button class="ion-margin-top largeButton"
+                  expand="block"
+                  color="purple"
+                  (click)="confirm()">
+        <ion-text color="secondary">Confirmar</ion-text>
+      </ion-button>
+      <ion-button class="ion-no-margin ion-no-padding" expand="block" color="primary" fill="clear" (click)="back()">
+        voltar
+      </ion-button>
+    </div>
   </div>
-  <div class="d-grid-center">
-    <ion-button class="ion-margin-top largeButton"
-                expand="block"
-                color="purple"
-                (click)="confirmExit()">
-      <ion-text color="secondary">Confirmar</ion-text>
-    </ion-button>
-    <ion-button class="ion-no-margin ion-no-padding" expand="block" color="primary" fill="clear" (click)="back()">
-      voltar
-    </ion-button>
+
+  <div class="d-flex" *ngIf="status === 'confirming'">
+    <ion-img src="/assets/icon/loading.svg"></ion-img>
+    <ion-text class="ion-margin-top">Confirmando...</ion-text>
+  </div>
+
+
+
+  <div class="d-flex" *ngIf="status === 'success'">
+    <ion-img src="/assets/icon/round-done.svg"></ion-img>
+    <ion-text class="ion-margin-top">Saída Liberada</ion-text>
   </div>
 </ion-content>

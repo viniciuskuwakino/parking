@@ -1,0 +1,15 @@
+.padding-vertical-large {
+  padding: 0 70px;
+}
+
+.d-flex {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  ion-img {
+    width: 70px;
+    height: 70px;
+  }
+}

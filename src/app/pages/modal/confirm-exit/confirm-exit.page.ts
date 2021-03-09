@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ModalController} from '@ionic/angular';
+import {Status} from '../../../enums/status';
 
 @Component({
   selector: 'app-confirm-exit',
@@ -7,20 +8,24 @@ import {ModalController} from '@ionic/angular';
   styleUrls: ['./confirm-exit.page.scss'],
 })
 export class ConfirmExitPage implements OnInit {
+  hiddenText: boolean;
+  status: string;
 
   constructor(
     private modalController: ModalController
-  ) { }
+  ) {
+    this.hiddenText = false;
+    this.status = Status.showText;
+  }
 
   ngOnInit() {
   }
 
-  confirmExit() {
-
-  }
-
-  goBack() {
-
+  async confirm() {
+    this.status = Status.confirming;
+    setTimeout(() => {
+      this.status = Status.success;
+    }, 3000);
   }
 
   async back() {

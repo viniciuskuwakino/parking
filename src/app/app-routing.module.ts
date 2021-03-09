@@ -16,10 +16,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/modal/confirm-payment-modal/confirm-payment-modal.module').then( m => m.ConfirmPaymentModalPageModule)
   },
   {
-    path: 'payed',
-    loadChildren: () => import('./pages/modal/payed/payed.module').then( m => m.PayedPageModule)
-  },
-  {
     path: 'confirm-exit',
     loadChildren: () => import('./pages/modal/confirm-exit/confirm-exit.module').then( m => m.ConfirmExitPageModule)
   },
