@@ -80,7 +80,15 @@ export class FolderPage extends FormValidatorBase implements OnInit {
     await this.router.navigateByUrl('/historic');
   }
 
-  isEnable() {
+  entranceRoute() {
+    setTimeout(async () => {
+    await this.router.navigateByUrl('/folder/Inbox');
+    }, 1000);
+  }
 
+  exitRoute() {
+    setTimeout(async () => {
+      await this.router.navigateByUrl('/folder/Outbox');
+    }, 1000);
   }
 }
