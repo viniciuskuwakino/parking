@@ -13,18 +13,26 @@
   <ion-grid>
     <ion-row class="ion-justify-content-center">
       <div class="segment ion-margin-top">
-        <ion-segment #segment [(ngModel)]="type" mode="md" (ionChange)="segmentChanged($event)" value="entrance">
+        <ion-segment #segment
+                     [(ngModel)]="type"
+                     mode="md"
+                     (ionChange)="segmentChanged($event)"
+                     value="entrance">
           <ion-segment-button value="entrance" (click)="entranceRoute()">
             <ion-label>Entrada</ion-label>
           </ion-segment-button>
+
           <ion-segment-button value="exit" (click)="exitRoute()">
             <ion-label>Saída</ion-label>
           </ion-segment-button>
         </ion-segment>
 
-        <div [ngSwitch]="type">
+
+        <div>
           <form [formGroup]="parkingForm">
-            <ion-item *ngSwitchCase="'entrance'" lines="none" [ngClass]="{'is-invalid': submitted && form.carEnterPlate.errors}">
+
+            <!--Entrada-->
+            <ion-item lines="none" [ngClass]="{'is-invalid': submitted && form.carEnterPlate.errors}">
               <ion-label position="stacked" color="medium" class="ion-no-margin ion-margin-bottom font-16-normal">Número da placa:</ion-label>
               <ion-textarea [(ngModel)]="carModel.carEnterPlate"
                             formControlName="carEnterPlate"
@@ -47,7 +55,9 @@
               <div *ngIf="form.carEnterPlate.errors.required">é necessário uma placa</div>
             </div>
 
-            <ion-item *ngSwitchCase="'exit'" lines="none" [ngClass]="{'is-invalid': submitted && form.carExitPlate.errors}">
+
+            <!--Saída-->
+           <!-- <ion-item *ngSwitchCase="'exit'" lines="none" [ngClass]="{'is-invalid': submitted && form.carExitPlate.errors}">
               <ion-label position="stacked" color="medium" class="font-16-normal">Número da placa:</ion-label>
               <ion-textarea [(ngModel)]="carModel.carExitPlate"
                             formControlName="carExitPlate"
@@ -81,7 +91,7 @@
               <ion-button class="ion-margin-top largeButton" expand="block" color="primary" fill="clear" (click)="seeHistoric()">
                 VER HISTÓRICO
               </ion-button>
-            </ion-item>
+            </ion-item>-->
           </form>
         </div>
       </div>

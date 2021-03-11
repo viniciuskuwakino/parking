@@ -6,6 +6,7 @@ import {Plate} from '../../models/plate';
 import {FormValidatorBase} from 'src/app/helpers/customFormValidator';
 import {ConfirmPaymentModalPage} from '../modal/confirm-payment-modal/confirm-payment-modal.page';
 import {ConfirmExitPage} from '../modal/confirm-exit/confirm-exit.page';
+import {RequestsService} from '../../services/api/requests.service';
 
 @Component({
   selector: 'app-folder',
@@ -22,7 +23,8 @@ export class FolderPage extends FormValidatorBase implements OnInit {
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     public modalController: ModalController,
-    private router: Router
+    private router: Router,
+    private requestService: RequestsService
   ) {
     super();
     this.type = 'entrance';
@@ -53,10 +55,16 @@ export class FolderPage extends FormValidatorBase implements OnInit {
   }
 
   segmentChanged(event: any) {
+    console.log(event.detail.value);
   }
 
   enter() {
     this.submitted = true;
+ /*   this.requestService.registerPayment(id).subscribe((res: any) => {
+
+    }, err => {
+      console.log(err);
+    });*/
   }
 
   async payment() {
@@ -81,14 +89,14 @@ export class FolderPage extends FormValidatorBase implements OnInit {
   }
 
   entranceRoute() {
-    setTimeout(async () => {
+/*    setTimeout(async () => {
     await this.router.navigateByUrl('/folder/Inbox');
-    }, 1000);
+    }, 1000);*/
   }
 
   exitRoute() {
-    setTimeout(async () => {
+/*    setTimeout(async () => {
       await this.router.navigateByUrl('/folder/Outbox');
-    }, 1000);
+    }, 1000);*/
   }
 }
