@@ -28,7 +28,7 @@ $ ionic serve
 ### :rocket: Deploying / Produção
 Caso deseje fazer build para produção utilize o comando abaixo, mas você já
 pode ver ele em funcionamento
-[Clicando Aqui](https://easy-cars-frontend-test.netlify.app/).
+[Clicando Aqui](https://parkingfuzo.netlify.app).
 
 ```shell
 $ ionic build --prod
