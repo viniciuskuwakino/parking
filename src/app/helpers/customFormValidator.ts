@@ -1,14 +1,20 @@
 import { FormGroup } from '@angular/forms';
 
 export class FormValidatorBase {
-  parkingForm: FormGroup;
+  parkingEnterForm: FormGroup;
+  parkingExitForm: FormGroup;
+
   submitted: boolean;
 
   constructor() {
     this.submitted = false;
   }
 
-  get form() {
-    return this.parkingForm.controls;
+  get enterForm() {
+    return this.parkingEnterForm.controls;
+  }
+
+  get exitForm() {
+    return this.parkingExitForm.controls;
   }
 }

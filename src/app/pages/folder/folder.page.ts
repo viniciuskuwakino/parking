@@ -34,21 +34,24 @@ export class FolderPage extends FormValidatorBase implements OnInit {
 
   ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
-    this.parkingForm = this.formBuilder.group({
+    this.parkingEnterForm = this.formBuilder.group({
       carEnterPlate: [
         '',
         [
           Validators.required,
-          Validators.minLength(7),
-          Validators.maxLength(7)
+          Validators.minLength(8),
+          Validators.maxLength(8)
         ]
       ],
+    });
+
+    this.parkingExitForm = this.formBuilder.group({
       carExitPlate: [
         '',
         [
           Validators.required,
-          Validators.minLength(7),
-          Validators.maxLength(7)
+          Validators.minLength(8),
+          Validators.maxLength(8)
         ]
       ],
     });
@@ -60,20 +63,21 @@ export class FolderPage extends FormValidatorBase implements OnInit {
 
   enter() {
     this.submitted = true;
- /*   this.requestService.registerPayment(id).subscribe((res: any) => {
-
-    }, err => {
-      console.log(err);
-    });*/
+    if (this.parkingEnterForm) {
+      console.log('enter valid');
+    }
   }
 
   async payment() {
     this.submitted = true;
-    const modal = await this.modalController.create({
-      component: ConfirmPaymentModalPage,
-      cssClass: 'medium-modal'
-    });
-    return await modal.present();
+    if (this.parkingExitForm.valid) {
+      const modal = await this.modalController.create({
+        component: ConfirmPaymentModalPage,
+        cssClass: 'medium-modal'
+      });
+      return await modal.present();
+
+    }
   }
 
   async exit() {
@@ -86,17 +90,5 @@ export class FolderPage extends FormValidatorBase implements OnInit {
 
   async seeHistoric() {
     await this.router.navigateByUrl('/historic');
-  }
-
-  entranceRoute() {
-/*    setTimeout(async () => {
-    await this.router.navigateByUrl('/folder/Inbox');
-    }, 1000);*/
-  }
-
-  exitRoute() {
-/*    setTimeout(async () => {
-      await this.router.navigateByUrl('/folder/Outbox');
-    }, 1000);*/
   }
 }

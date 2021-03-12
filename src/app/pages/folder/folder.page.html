@@ -13,26 +13,18 @@
   <ion-grid>
     <ion-row class="ion-justify-content-center">
       <div class="segment ion-margin-top">
-        <ion-segment #segment
-                     [(ngModel)]="type"
-                     mode="md"
-                     (ionChange)="segmentChanged($event)"
-                     value="entrance">
-          <ion-segment-button value="entrance" (click)="entranceRoute()">
+        <ion-segment #segment [(ngModel)]="type" mode="md" (ionChange)="segmentChanged($event)" value="entrance">
+          <ion-segment-button value="entrance">
             <ion-label>Entrada</ion-label>
           </ion-segment-button>
-
-          <ion-segment-button value="exit" (click)="exitRoute()">
+          <ion-segment-button value="exit">
             <ion-label>Saída</ion-label>
           </ion-segment-button>
         </ion-segment>
 
-
-        <div>
-          <form [formGroup]="parkingForm">
-
-            <!--Entrada-->
-            <ion-item lines="none" [ngClass]="{'is-invalid': submitted && form.carEnterPlate.errors}">
+        <div [ngSwitch]="type">
+          <form [formGroup]="parkingEnterForm">
+            <ion-item *ngSwitchCase="'entrance'" lines="none">
               <ion-label position="stacked" color="medium" class="ion-no-margin ion-margin-bottom font-16-normal">Número da placa:</ion-label>
               <ion-textarea [(ngModel)]="carModel.carEnterPlate"
                             formControlName="carEnterPlate"
@@ -40,6 +32,7 @@
                             simpleMask="aaa-9999"
                             inputmode="text"
                             placeholder="AAA-0000"
+                            maxlength="8"
                             class="text-area-lg">
               </ion-textarea>
               <ion-button class="ion-margin-top largeButton"
@@ -50,14 +43,10 @@
                 <ion-text color="secondary">CONFIRMAR ENTRADA</ion-text>
               </ion-button>
             </ion-item>
+          </form>
 
-            <div *ngIf="submitted && form.carEnterPlate.errors" class="invalid-feedback">
-              <div *ngIf="form.carEnterPlate.errors.required">é necessário uma placa</div>
-            </div>
-
-
-            <!--Saída-->
-           <!-- <ion-item *ngSwitchCase="'exit'" lines="none" [ngClass]="{'is-invalid': submitted && form.carExitPlate.errors}">
+          <form [formGroup]="parkingExitForm">
+            <ion-item *ngSwitchCase="'exit'" lines="none">
               <ion-label position="stacked" color="medium" class="font-16-normal">Número da placa:</ion-label>
               <ion-textarea [(ngModel)]="carModel.carExitPlate"
                             formControlName="carExitPlate"
@@ -66,6 +55,7 @@
                             type="text"
                             inputmode="text"
                             placeholder="AAA-0000"
+                            maxlength="8"
                             class="text-area-lg">
               </ion-textarea>
               <ion-button class="ion-margin-top largeButton"
@@ -76,9 +66,6 @@
                 <ion-text color="secondary">PAGAMENTO</ion-text>
               </ion-button>
 
-              <div *ngIf="submitted && form.carExitPlate.errors" class="invalid-feedback">
-                <div *ngIf="form.carExitPlate.errors.required">Preencha seu e-mail.</div>
-              </div>
 
               <ion-button class="ion-margin-top largeButton"
                           expand="block"
@@ -88,11 +75,13 @@
                           (click)="exit()">
                 <ion-text color="white">SAÍDA</ion-text>
               </ion-button>
+
               <ion-button class="ion-margin-top largeButton" expand="block" color="primary" fill="clear" (click)="seeHistoric()">
                 VER HISTÓRICO
               </ion-button>
-            </ion-item>-->
+            </ion-item>
           </form>
+
         </div>
       </div>
     </ion-row>

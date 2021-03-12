@@ -34,3 +34,13 @@ ion-content {
     }
   }
 }
+
+.invalid-feedback-payment {
+  position: relative;
+  top: 180px;
+  z-index: 2;
+  left: 24px;
+  border: 1px solid red;
+  width: 290px;
+  height: 30px;
+}
